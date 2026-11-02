@@ -13,6 +13,9 @@ export const PERSONAL_INFO = {
   about: "Final year student at IIT Kanpur with a strong foundation in Full Stack Development, Data Analytics, and Machine Learning. Passionate about building scalable web applications and data-driven solutions.",
 };
 
+// Focus areas shown in the hero — taken straight from the "about" statement above.
+export const FOCUS_AREAS = ["Full Stack Development", "Data Analytics", "Machine Learning"];
+
 export const SOCIAL_LINKS = [
   { name: 'Email', icon: Mail, url: `mailto:${PERSONAL_INFO.email}` },
   { name: 'LinkedIn', icon: Linkedin, url: `https://${PERSONAL_INFO.linkedin}` },

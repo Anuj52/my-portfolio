@@ -1,71 +1,61 @@
-import React from 'react';
-import Section from './Section';
+import { BarChart3, Code2, Layers, Wrench } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import { SKILLS } from '../constants';
-import { Code, Database, Terminal, PenTool } from 'lucide-react';
-import { motion } from 'framer-motion';
+import Reveal from './Reveal';
+import Section from './Section';
+import SpotlightCard from './SpotlightCard';
 
-const Skills: React.FC = () => {
-  const getIcon = (category: string) => {
-    if (category.includes('Language')) return <Code size={20} />;
-    if (category.includes('Framework')) return <Database size={20} />;
-    if (category.includes('Software')) return <Terminal size={20} />;
-    return <PenTool size={20} />;
-  };
+// Pick an icon from the category name, so re-ordering or renaming groups in constants.ts still works.
+function iconFor(category: string): LucideIcon {
+  const name = category.toLowerCase();
+  if (name.includes('language')) return Code2;
+  if (name.includes('framework') || name.includes('database')) return Layers;
+  if (name.includes('software') || name.includes('librar')) return BarChart3;
+  return Wrench;
+}
 
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const item = {
-    hidden: { opacity: 0, scale: 0.8 },
-    show: { opacity: 1, scale: 1 }
-  };
-
+export default function Skills() {
   return (
-    <Section id="skills" title="Technical Arsenal" className="bg-slate-900">
-      <motion.div
-        variants={container}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-50px" }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-      >
-        {SKILLS.map((cat, idx) => (
-          <motion.div
-            key={idx}
-            variants={item}
-            whileHover={{ y: -5 }}
-            className="group glass-card p-6 rounded-xl hover:border-accent/50 transition-colors duration-300"
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-2 rounded-lg bg-slate-900/50 text-accent group-hover:scale-110 transition-transform">
-                {getIcon(cat.category)}
-              </div>
-              <h3 className="text-lg font-semibold text-white">{cat.category}</h3>
-            </div>
+    <Section
+      id="skills"
+      index="02"
+      eyebrow="Skills"
+      title={
+        <>
+          Technical <span className="hl">arsenal</span>
+        </>
+      }
+    >
+      <div className="grid gap-6 md:grid-cols-2">
+        {SKILLS.map((group, i) => {
+          const Icon = iconFor(group.category);
+          return (
+            <Reveal key={group.category} delay={(i % 2) * 0.08}>
+              <SpotlightCard className="h-full p-6 sm:p-8">
+                <div className="flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-4">
+                    <span className="grid size-12 place-items-center rounded-card border border-accent/30 bg-accent/10 text-accent">
+                      <Icon size={22} aria-hidden="true" />
+                    </span>
+                    <h3 className="text-h3">{group.category}</h3>
+                  </div>
+                  <span className="font-mono text-sm text-subtle" aria-hidden="true">
+                    {String(group.skills.length).padStart(2, '0')}
+                  </span>
+                </div>
 
-            <div className="flex flex-wrap gap-2">
-              {cat.skills.map((skill, sIdx) => (
-                <motion.span
-                  key={sIdx}
-                  whileHover={{ scale: 1.05 }}
-                  className="px-3 py-1 text-sm text-slate-300 bg-slate-900/50 rounded-full border border-slate-700/50 group-hover:border-accent/30 hover:bg-accent/10 transition-colors cursor-default"
-                >
-                  {skill}
-                </motion.span>
-              ))}
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
+                <ul className="mt-8 flex flex-wrap gap-2">
+                  {group.skills.map((skill) => (
+                    <li key={skill} className="chip chip-hover text-fg/90">
+                      {skill}
+                    </li>
+                  ))}
+                </ul>
+              </SpotlightCard>
+            </Reveal>
+          );
+        })}
+      </div>
     </Section>
   );
-};
-
-export default Skills;
+}

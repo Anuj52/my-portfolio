@@ -1,71 +1,97 @@
-import React from 'react';
+import { Award, BookOpen, Check, GraduationCap } from 'lucide-react';
+import { ACHIEVEMENTS, COURSES, EDUCATION } from '../constants';
+import Reveal from './Reveal';
 import Section from './Section';
-import { EDUCATION, COURSES, ACHIEVEMENTS } from '../constants';
-import { GraduationCap, Award, BookOpen } from 'lucide-react';
+import SpotlightCard from './SpotlightCard';
 
-const About: React.FC = () => {
+export default function About() {
   return (
-    <Section id="about" title="Education & Background">
-      <div className="grid md:grid-cols-2 gap-12">
-        {/* Education */}
-        <div className="space-y-8">
-            <h3 className="text-xl font-semibold text-white flex items-center gap-2 mb-6">
-                <GraduationCap className="text-accent" aria-hidden="true" /> Academic Journey
+    <Section
+      id="about"
+      index="01"
+      eyebrow="About"
+      title={
+        <>
+          Education &amp; <span className="hl">background</span>
+        </>
+      }
+    >
+      <div className="grid gap-6 lg:grid-cols-12">
+        {/* ---------- Education timeline ---------- */}
+        <Reveal className="lg:col-span-5">
+          <SpotlightCard className="flex h-full flex-col p-6 sm:p-8">
+            <h3 className="flex items-center gap-3 text-h3">
+              <GraduationCap className="text-accent" size={22} aria-hidden="true" />
+              Academic journey
             </h3>
-            <div className="relative border-l border-slate-700 ml-3 pl-8 space-y-10">
-                {EDUCATION.map((edu, index) => (
-                <div key={index} className="relative">
-                    <span className="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-slate-900 border-2 border-accent" aria-hidden="true"></span>
-                    <span className="text-sm text-accent font-mono mb-1 block">{edu.year}</span>
-                    <h4 className="text-lg font-bold text-white">{edu.degree}</h4>
-                    <p className="text-slate-400">{edu.institute}</p>
-                    {edu.score && <p className="text-slate-400 text-sm mt-1 font-medium">Score: {edu.score}</p>}
-                </div>
+
+            {/* On desktop the entries spread out to fill the card height */}
+            <ol className="relative mt-8 flex flex-1 flex-col justify-between gap-8 border-l border-line pl-8">
+              {EDUCATION.map((edu) => (
+                <li key={`${edu.degree}-${edu.year}`} className="relative">
+                  <span
+                    aria-hidden="true"
+                    className="absolute -left-[39px] top-1.5 size-3 rounded-full border-2 border-accent bg-canvas"
+                  />
+                  <p className="font-mono text-xs tracking-wide text-accent-text">{edu.year}</p>
+                  <h4 className="mt-2 text-lg font-semibold tracking-tight">{edu.degree}</h4>
+                  <p className="mt-1 text-muted">{edu.institute}</p>
+                  {edu.score && <p className="chip mt-4">Score: {edu.score}</p>}
+                </li>
+              ))}
+            </ol>
+          </SpotlightCard>
+        </Reveal>
+
+        <div className="grid gap-6 lg:col-span-7">
+          {/* ---------- Achievements ---------- */}
+          <Reveal delay={0.08}>
+            <SpotlightCard className="h-full p-6 sm:p-8">
+              <h3 className="flex items-center gap-3 text-h3">
+                <Award className="text-accent" size={22} aria-hidden="true" />
+                Achievements &amp; extra-curriculars
+              </h3>
+              <ul className="mt-6 space-y-4">
+                {ACHIEVEMENTS.map((item) => (
+                  <li key={item} className="flex items-start gap-4 text-muted">
+                    <span
+                      aria-hidden="true"
+                      className="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-accent/15 text-accent"
+                    >
+                      <Check size={14} strokeWidth={3} />
+                    </span>
+                    <span className="leading-relaxed">{item}</span>
+                  </li>
                 ))}
-            </div>
-        </div>
+              </ul>
+            </SpotlightCard>
+          </Reveal>
 
-        {/* Right Column: Achievements & Courses */}
-        <div className="space-y-12">
-             {/* Achievements */}
-             <div>
-                <h3 className="text-xl font-semibold text-white flex items-center gap-2 mb-6">
-                    <Award className="text-accent" aria-hidden="true" /> Achievements & Extra-Curriculars
-                </h3>
-                <ul className="space-y-4">
-                    {ACHIEVEMENTS.map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-slate-300">
-                            <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" aria-hidden="true"></span>
-                            <span className="text-sm leading-relaxed">{item}</span>
+          {/* ---------- Relevant courses ---------- */}
+          <Reveal delay={0.16}>
+            <SpotlightCard className="h-full p-6 sm:p-8">
+              <h3 className="flex items-center gap-3 text-h3">
+                <BookOpen className="text-accent" size={22} aria-hidden="true" />
+                Relevant courses
+              </h3>
+              <div className="mt-6 grid gap-8 sm:grid-cols-2">
+                {COURSES.map((group) => (
+                  <div key={group.category}>
+                    <h4 className="font-mono text-xs uppercase tracking-[0.16em] text-subtle">{group.category}</h4>
+                    <ul className="mt-4 flex flex-wrap gap-2">
+                      {group.courses.map((course) => (
+                        <li key={course} className="chip chip-hover">
+                          {course}
                         </li>
-                    ))}
-                </ul>
-            </div>
-
-            {/* Courses */}
-            <div>
-                 <h3 className="text-xl font-semibold text-white flex items-center gap-2 mb-6">
-                    <BookOpen className="text-accent" aria-hidden="true" /> Relevant Courses
-                </h3>
-                <div className="grid sm:grid-cols-2 gap-6">
-                    {COURSES.map((category, idx) => (
-                        <div key={idx} className="bg-slate-800/50 p-4 rounded-lg border border-slate-700">
-                            <h4 className="text-white font-medium mb-3 border-b border-slate-700 pb-2">{category.category}</h4>
-                            <div className="flex flex-wrap gap-2">
-                                {category.courses.map((c, i) => (
-                                    <span key={i} className="text-xs text-slate-400 bg-slate-800 px-2 py-1 rounded border border-slate-700">
-                                        {c}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </SpotlightCard>
+          </Reveal>
         </div>
       </div>
     </Section>
   );
-};
-
-export default About;
+}

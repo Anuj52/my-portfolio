@@ -1,30 +1,32 @@
-import React from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
+import { MotionConfig } from 'framer-motion';
 import About from './components/About';
-import Skills from './components/Skills';
-import Projects from './components/projects';
+import Contact from './components/Contact';
 import Experience from './components/Experience';
-import Contact from './components/Footer';
-import BackgroundParticles from './components/BackgroundParticles';
-import SEO from './components/SEO';
+import Footer from './components/Footer';
+import Hero from './components/Hero';
+import Marquee from './components/Marquee';
+import Navbar from './components/Navbar';
+import Projects from './components/projects';
+import Skills from './components/Skills';
 
-const App: React.FC = () => {
+export default function App() {
   return (
-    <div className="bg-slate-900 min-h-screen text-slate-200">
-      <SEO />
-      <BackgroundParticles />
+    // reducedMotion="user": visitors who turn on "reduce motion" in their OS get calmer animations
+    <MotionConfig reducedMotion="user">
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
       <Navbar />
-      <main className="relative z-10">
+      <main id="main">
         <Hero />
+        <Marquee />
         <About />
         <Skills />
         <Projects />
         <Experience />
+        <Contact />
       </main>
-      <Contact />
-    </div>
+      <Footer />
+    </MotionConfig>
   );
-};
-
-export default App;
+}

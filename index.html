@@ -1,23 +1,161 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Anuj Chaudhary | Portfolio</title>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0"
-  }
-}
-</script>
-</head>
+
+    <!-- ======================================================================
+         SEO
+         Live site URL used below: https://my-portfolio-blush-psi-24.vercel.app
+         If you ever move to a custom domain, replace that URL in this file,
+         in public/robots.txt and in public/sitemap.xml (search & replace).
+         ====================================================================== -->
+    <title>Anuj Chaudhary – Full Stack &amp; ML Developer | IIT Kanpur</title>
+    <meta
+      name="description"
+      content="Portfolio of Anuj Chaudhary, a final-year IIT Kanpur student building scalable full stack web apps, data analytics dashboards and machine learning projects."
+    />
+    <meta name="author" content="Anuj Chaudhary" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <link rel="canonical" href="https://my-portfolio-blush-psi-24.vercel.app/" />
+    <meta name="theme-color" content="#0B0E14" />
+    <meta name="color-scheme" content="dark" />
+
+    <!-- Icons -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Open Graph (WhatsApp, LinkedIn, Facebook, Slack, Discord...) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Anuj Chaudhary" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:url" content="https://my-portfolio-blush-psi-24.vercel.app/" />
+    <meta property="og:title" content="Anuj Chaudhary – Full Stack &amp; ML Developer | IIT Kanpur" />
+    <meta
+      property="og:description"
+      content="Portfolio of Anuj Chaudhary, a final-year IIT Kanpur student building scalable full stack web apps, data analytics dashboards and machine learning projects."
+    />
+    <meta property="og:image" content="https://my-portfolio-blush-psi-24.vercel.app/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Anuj Chaudhary – Full Stack, Data Analytics and Machine Learning portfolio" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Anuj Chaudhary – Full Stack &amp; ML Developer | IIT Kanpur" />
+    <meta
+      name="twitter:description"
+      content="Portfolio of Anuj Chaudhary, a final-year IIT Kanpur student building scalable full stack web apps, data analytics dashboards and machine learning projects."
+    />
+    <meta name="twitter:image" content="https://my-portfolio-blush-psi-24.vercel.app/og-image.png" />
+    <meta name="twitter:image:alt" content="Anuj Chaudhary – Full Stack, Data Analytics and Machine Learning portfolio" />
+
+    <!-- Structured data (helps Google understand who this site is about) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://my-portfolio-blush-psi-24.vercel.app/#website",
+            "url": "https://my-portfolio-blush-psi-24.vercel.app/",
+            "name": "Anuj Chaudhary – Portfolio",
+            "inLanguage": "en",
+            "publisher": { "@id": "https://my-portfolio-blush-psi-24.vercel.app/#person" }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://my-portfolio-blush-psi-24.vercel.app/#person",
+            "name": "Anuj Chaudhary",
+            "url": "https://my-portfolio-blush-psi-24.vercel.app/",
+            "description": "Final year Mechanical Engineering undergraduate at IIT Kanpur with a strong foundation in Full Stack Development, Data Analytics, and Machine Learning.",
+            "affiliation": {
+              "@type": "CollegeOrUniversity",
+              "name": "Indian Institute of Technology Kanpur",
+              "url": "https://www.iitk.ac.in/"
+            },
+            "sameAs": ["https://github.com/Anuj52", "https://linkedin.com/in/Anuj"],
+            "knowsAbout": [
+              "Full Stack Development",
+              "Data Analytics",
+              "Machine Learning",
+              "Python",
+              "JavaScript",
+              "React",
+              "Node.js",
+              "Django",
+              "MongoDB",
+              "D3.js"
+            ]
+          }
+        ]
+      }
+    </script>
+
+    <!-- Fonts: Geist (UI), Geist Mono (labels), Instrument Serif (italic accents) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&family=Instrument+Serif:ital@0;1&display=swap"
+    />
+  </head>
   <body>
     <div id="root"></div>
+
+    <!-- No-JavaScript fallback: plain-text version of the key content for crawlers that don't run JS
+         (some search engines, AI crawlers, link scrapers). Keep roughly in sync with src/constants.ts. -->
+    <noscript>
+      <div style="max-width: 720px; margin: 0 auto; padding: 6rem 1.25rem; font-family: system-ui, sans-serif; line-height: 1.65">
+        <h1>Anuj Chaudhary</h1>
+        <p>Final Year Undergraduate | Mechanical Engineering – Indian Institute of Technology Kanpur</p>
+        <p>
+          Final year student at IIT Kanpur with a strong foundation in Full Stack Development, Data Analytics, and
+          Machine Learning. Passionate about building scalable web applications and data-driven solutions.
+        </p>
+
+        <h2>Projects</h2>
+        <ul>
+          <li>
+            <a href="https://github.com/Anuj52/CS-661_project/tree/main/Visual%20Analytics%20System%20based%20on%20Google%20Trends%20Visualization">Visual Analytics Dashboard for Google Trends</a>
+            – Python, Flask, D3.js, JSON APIs
+          </li>
+          <li>
+            <a href="https://github.com/Anuj52/Picperfect-Hub">Pic-Picture Hub</a>
+            – Django, REST Framework, Pillow, SQL Parse
+          </li>
+          <li>
+            <a href="https://github.com/Anuj52/Mern-Ecom-project">Ecom-Project Powered by MERN</a>
+            – MongoDB, Express.js, React, Node.js, Redux, JWT
+          </li>
+          <li>
+            <a href="https://github.com/Anuj52/movie-recommender-system">Movie Recommender System</a>
+            – Python, Pandas, NumPy, Scikit-Learn, Streamlit
+          </li>
+          <li>
+            <a href="https://blogsphere-lake.vercel.app/">Blogsphere</a>
+            – React, Node.js, Express.js, MongoDB, Tailwind CSS
+          </li>
+        </ul>
+
+        <h2>Skills</h2>
+        <p>
+          Python, C, C++, SQL, MATLAB, HTML, CSS, JavaScript, Django, React, Node.js, Express.js, Bootstrap, Tailwind
+          CSS, MySQL, MongoDB, Pandas, NumPy, SciPy, Scikit-Learn, TensorFlow, PyTorch, Matplotlib, Plotly, Git,
+          GitHub, VS Code, Jupyter, Figma, Canva, LaTeX
+        </p>
+
+        <h2>Find me online</h2>
+        <ul>
+          <li><a href="https://github.com/Anuj52">GitHub – Anuj52</a></li>
+          <li><a href="https://linkedin.com/in/Anuj">LinkedIn – Anuj Chaudhary</a></li>
+        </ul>
+        <p>Please enable JavaScript to view the full interactive portfolio.</p>
+      </div>
+    </noscript>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

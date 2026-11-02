@@ -1,44 +1,40 @@
-import React from 'react';
+import type { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 
 interface SectionProps {
   id: string;
-  title: string;
-  className?: string;
-  children: React.ReactNode;
+  /** Section number shown in the label, e.g. "01" */
+  index: string;
+  /** Short label shown next to the number, e.g. "About" */
+  eyebrow: string;
+  /** Heading content. Wrap one word in <span className="hl"> for the serif-italic accent. */
+  title: ReactNode;
+  children: ReactNode;
 }
 
-const Section: React.FC<SectionProps> = ({ id, title, className = "", children }) => {
+export default function Section({ id, index, eyebrow, title, children }: SectionProps) {
   return (
-    <motion.section
+    <section
       id={id}
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`py-20 md:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto ${className}`}
+      aria-labelledby={`${id}-title`}
+      className="mx-auto w-full max-w-6xl px-6 py-20 sm:px-8 md:py-28"
     >
-      <div className="mb-16">
-        <motion.h2
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          className="text-3xl md:text-4xl font-bold text-white mb-4 relative inline-block"
-        >
+      <motion.header
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="mb-12 md:mb-16"
+      >
+        <p className="eyebrow">
+          <span>{index}</span>
+          {eyebrow}
+        </p>
+        <h2 id={`${id}-title`} className="mt-4 text-h2">
           {title}
-          <motion.span
-            initial={{ width: 0 }}
-            whileInView={{ width: "40%" }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="absolute -bottom-2 left-0 h-1 bg-accent rounded-full"
-          />
-        </motion.h2>
-      </div>
+        </h2>
+      </motion.header>
       {children}
-    </motion.section>
+    </section>
   );
-};
-
-export default Section;
+}

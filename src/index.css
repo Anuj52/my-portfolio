@@ -1,53 +1,253 @@
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+/* Colour, spacing, radius and type tokens live in one place (see that file for the rules).
+   Want a different palette? Set <html data-theme="carbon-amber"> or "nordic-zinc" in index.html. */
+@import "./styles/tokens.css";
 
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: #0f172a;
-  color: #f8fafc;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@theme {
+  --animate-marquee: marquee 70s linear infinite;
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #0f172a;
-}
-::-webkit-scrollbar-thumb {
-  background: #334155;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+/* ==========================================================================
+   Base
+   ========================================================================== */
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem;
+    color-scheme: dark;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) var(--color-canvas);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--color-canvas);
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: var(--color-accent-secondary);
+    color: var(--color-on-accent);
+  }
+
+  /* Focus ring: the action colour is at least 8:1 against every surface in every palette. */
+  :focus-visible {
+    outline: 2px solid var(--color-accent-secondary);
+    outline-offset: 4px;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
 }
 
-/* Selection Color */
-::selection {
-  background-color: #38bdf8; /* Accent color */
-  color: #0f172a;
-}
+/* ==========================================================================
+   Reusable pieces
+   ========================================================================== */
+@layer components {
+  /* Card with a hairline border, 8px corners and a gentle shadow (see SpotlightCard.tsx for the hover glow) */
+  .card {
+    position: relative;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    box-shadow:
+      0 1px 2px rgb(0 0 0 / 0.35),
+      0 8px 24px -16px rgb(0 0 0 / 0.6);
+    transition: border-color 0.2s ease;
+  }
+  .card:hover {
+    border-color: color-mix(in oklab, var(--color-accent-primary) 45%, var(--color-border));
+  }
 
-/* Glassmorphism Utility */
-.glass {
-  background: rgba(15, 23, 42, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
+  /* Soft cursor-following highlight inside a card: low-alpha identity colour, not a neon glow */
+  .spotlight {
+    isolation: isolate;
+    overflow: hidden;
+  }
+  .spotlight::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+    background: radial-gradient(
+      360px circle at var(--mx, 50%) var(--my, 0%),
+      color-mix(in oklab, var(--color-accent-primary) 8%, transparent),
+      transparent 65%
+    );
+  }
+  .spotlight:hover::before {
+    opacity: 1;
+  }
 
-.glass-card {
-  background: rgba(30, 41, 59, 0.4);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  /* Small pill used for skills, tech stacks, scores... (32px tall) */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+    background: color-mix(in oklab, var(--color-text-primary) 4%, transparent);
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    color: var(--color-text-secondary);
+    transition:
+      border-color 0.2s ease,
+      color 0.2s ease,
+      background-color 0.2s ease;
+  }
+  /* Add alongside .chip for pills that should react on hover (skills, tech stack, courses) */
+  .chip-hover:hover {
+    border-color: color-mix(in oklab, var(--color-accent-primary) 55%, transparent);
+    background: color-mix(in oklab, var(--color-accent-primary) 12%, transparent);
+    color: var(--color-text-primary);
+  }
+
+  /* Mono section label, e.g. "01 - ABOUT" */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-text-tertiary);
+  }
+  .eyebrow > span {
+    color: var(--color-accent-primary-text);
+  }
+  .eyebrow::after {
+    content: "";
+    width: 2.5rem;
+    height: 1px;
+    background: var(--color-border);
+  }
+
+  /* Serif-italic highlight word inside headings */
+  .hl {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.1em;
+    letter-spacing: -0.01em;
+    color: var(--color-accent-primary-text);
+  }
+
+  /* Buttons: 48px tall (40px for .btn-sm). Primary = action colour with dark ink; ghost = outlined. */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    border-radius: var(--radius-card);
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5rem;
+    transition:
+      transform 0.2s ease,
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease;
+  }
+  .btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+  .btn-primary {
+    background: var(--color-accent-secondary);
+    color: var(--color-on-accent);
+  }
+  .btn-primary:hover {
+    background: color-mix(in oklab, var(--color-accent-secondary) 82%, white);
+    transform: translateY(-1px);
+  }
+  /* The text label identifies a ghost button, so its outline can stay subtle; it firms up on hover. */
+  .btn-ghost {
+    border: 1px solid var(--color-border);
+    background: color-mix(in oklab, var(--color-text-primary) 4%, transparent);
+    color: var(--color-text-primary);
+  }
+  .btn-ghost:hover {
+    border-color: var(--color-border-strong);
+    background: color-mix(in oklab, var(--color-text-primary) 8%, transparent);
+  }
+
+  /* Accessibility: "Skip to content" link */
+  .skip-link {
+    position: absolute;
+    left: var(--space-sm);
+    top: -4rem;
+    z-index: 100;
+    border-radius: var(--radius-card);
+    background: var(--color-accent-secondary);
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    color: var(--color-on-accent);
+    transition: top 0.2s ease;
+  }
+  .skip-link:focus {
+    top: var(--space-sm);
+  }
+
+  /* Headline that fades from primary text colour to a softer tone, top to bottom (never pure white) */
+  .text-fade {
+    background: linear-gradient(
+      180deg,
+      var(--color-text-primary) 35%,
+      color-mix(in oklab, var(--color-text-primary) 70%, var(--color-canvas)) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  /* Windows high-contrast mode removes backgrounds, which would make clipped-gradient text invisible */
+  @media (forced-colors: active) {
+    .text-fade {
+      background: none;
+      -webkit-text-fill-color: currentColor;
+      color: CanvasText;
+    }
+  }
+
+  /* Hero backdrop: faint blueprint grid on the 8px rhythm (64px cells), pure CSS */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, var(--color-text-primary) 4%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--color-text-primary) 4%, transparent) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 30%, transparent 75%);
+  }
 }

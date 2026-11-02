@@ -1,144 +1,144 @@
-import React from 'react';
-import Section from './Section';
+import { ArrowUpRight, Github, Zap } from 'lucide-react';
 import { PROJECTS } from '../constants';
-import { motion } from 'framer-motion';
-import {
-  FolderGit2,
-  ExternalLink,
-  Github,
-  Zap,
-  Code,
-  Database,
-  Server,
-  Layout,
-  Cpu,
-  Globe
-} from 'lucide-react';
+import type { Project } from '../types';
+import { isRealLink, linkProps } from '../utils';
+import Reveal from './Reveal';
+import Section from './Section';
+import SpotlightCard from './SpotlightCard';
 
-const Projects: React.FC = () => {
+interface ProjectCardProps {
+  project: Project;
+  index: number;
+  featured: boolean;
+}
 
-  // Helper to get icon based on technology name
-  const getTechIcon = (tech: string) => {
-    const t = tech.toLowerCase();
-    if (t.includes('react') || t.includes('html') || t.includes('css') || t.includes('bootstrap') || t.includes('tailwind') || t.includes('d3')) return <Layout size={14} />;
-    if (t.includes('node') || t.includes('django') || t.includes('flask') || t.includes('express')) return <Server size={14} />;
-    if (t.includes('mongo') || t.includes('sql')) return <Database size={14} />;
-    if (t.includes('python') || t.includes('js') || t.includes('java')) return <Code size={14} />;
-    if (t.includes('ml') || t.includes('pandas') || t.includes('numpy') || t.includes('scikit')) return <Cpu size={14} />;
-    return <Globe size={14} />;
-  };
+function ProjectCard({ project, index, featured }: ProjectCardProps) {
+  const techs = project.tech
+    .split(',')
+    .map((tech) => tech.trim())
+    .filter(Boolean);
 
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
+  // For "Self Project" the date just repeats the type, so only show the date when it adds information.
+  const showDate = Boolean(project.date) && project.date !== project.type;
 
-  const item = {
-    hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0 }
-  };
+  const impact = project.impact ? (
+    <div className="flex gap-3 rounded-card border border-accent/25 bg-accent/10 p-4">
+      <Zap size={18} className="mt-1 shrink-0 text-accent" aria-hidden="true" />
+      <p className="leading-relaxed text-fg/90">
+        <span className="sr-only">Impact: </span>
+        {project.impact}
+      </p>
+    </div>
+  ) : null;
+
+  const bullets = (
+    <ul className="space-y-4">
+      {project.description.map((line) => (
+        <li key={line} className="flex gap-3 leading-relaxed text-muted">
+          <span aria-hidden="true" className="mt-[11px] size-1 shrink-0 rounded-full bg-subtle" />
+          {line}
+        </li>
+      ))}
+    </ul>
+  );
+
+  const links = (
+    <div className="flex flex-wrap gap-4">
+      {isRealLink(project.demoLink) && (
+        <a
+          href={project.demoLink}
+          {...linkProps(project.demoLink)}
+          aria-label={`Live demo of ${project.title}`}
+          className="btn btn-primary btn-sm"
+        >
+          Live demo <ArrowUpRight size={16} aria-hidden="true" />
+        </a>
+      )}
+      {isRealLink(project.codeLink) && (
+        <a
+          href={project.codeLink}
+          {...linkProps(project.codeLink)}
+          aria-label={`Source code of ${project.title} on GitHub`}
+          className="btn btn-ghost btn-sm"
+        >
+          <Github size={16} aria-hidden="true" /> Source code
+        </a>
+      )}
+    </div>
+  );
 
   return (
-    <Section id="projects" title="Featured Projects">
-      <motion.div
-        variants={container}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-100px" }}
-        className="grid md:grid-cols-2 gap-8"
-      >
-        {PROJECTS.map((project, idx) => (
-          <motion.div
-            key={idx}
-            variants={item}
-            whileHover={{ y: -10, transition: { duration: 0.3 } }}
-            className="flex flex-col h-full glass-card rounded-2xl overflow-hidden hover:border-accent/50 transition-colors duration-300 group"
-          >
-            {/* Header */}
-            <div className="p-6 pb-0">
-              <div className="flex justify-between items-start mb-4">
-                <div className="p-3 bg-slate-900/50 rounded-xl text-accent group-hover:text-white group-hover:bg-accent transition-colors duration-300">
-                  <FolderGit2 size={24} aria-hidden="true" />
-                </div>
-                <span className="text-xs font-mono text-slate-400 border border-slate-700/50 px-2 py-1 rounded">
-                  {project.type}
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors">{project.title}</h3>
+    <SpotlightCard as="article" className="flex h-full flex-col p-6 sm:p-8">
+      <header className="flex flex-wrap items-center justify-between gap-x-4 gap-y-4">
+        <p className="flex items-center gap-3 font-mono">
+          <span className="text-sm text-accent-text">{String(index + 1).padStart(2, '0')}</span>
+          {showDate && (
+            <span className="whitespace-nowrap text-xs uppercase tracking-wider text-subtle">{project.date}</span>
+          )}
+        </p>
+        <p className="whitespace-nowrap rounded-full border border-accent/40 bg-accent/10 px-3 py-1 font-mono text-xs uppercase tracking-wider text-accent-text">
+          {project.type}
+        </p>
+      </header>
 
-              {/* Tech Stack Badges */}
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tech.split(',').map((item, i) => (
-                  <span
-                    key={i}
-                    className="inline-flex items-center gap-1 text-xs font-medium text-slate-300 bg-slate-900/60 px-2 py-1 rounded border border-slate-700/50"
-                  >
-                    {getTechIcon(item)}
-                    {item.trim()}
-                  </span>
-                ))}
-              </div>
-            </div>
+      <h3 className="mt-6 text-h3">{project.title}</h3>
 
-            {/* Description & Impact */}
-            <div className="p-6 pt-2 flex-grow">
-              {/* Impact Summary */}
-              {project.impact && (
-                <div className="mb-4 p-3 bg-slate-900/50 rounded-lg border-l-2 border-accent/70">
-                  <div className="flex items-start gap-2">
-                    <Zap size={16} className="text-yellow-400 mt-0.5 flex-shrink-0" />
-                    <p className="text-sm text-slate-300 font-medium italic">{project.impact}</p>
-                  </div>
-                </div>
-              )}
-
-              <ul className="space-y-2 mb-4">
-                {project.description.slice(0, 3).map((desc, i) => (
-                  <li key={i} className="text-slate-400 text-sm leading-relaxed flex items-start gap-2">
-                    <span className="mt-1.5 w-1 h-1 rounded-full bg-slate-600 flex-shrink-0" aria-hidden="true"></span>
-                    {desc}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Links */}
-            <div className="px-6 pb-6 pt-0 mt-auto flex gap-4 border-t border-slate-700/50 pt-4">
-              {project.demoLink && (
-                <a
-                  href={project.demoLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent rounded-md px-2 py-1 -ml-2"
-                  aria-label={`View live demo of ${project.title}`}
-                >
-                  <ExternalLink size={16} aria-hidden="true" />
-                  Live Demo
-                </a>
-              )}
-              {project.codeLink && (
-                <a
-                  href={project.codeLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent rounded-md px-2 py-1"
-                  aria-label={`View source code for ${project.title}`}
-                >
-                  <Github size={16} aria-hidden="true" />
-                  Source Code
-                </a>
-              )}
-            </div>
-          </motion.div>
+      <ul aria-label="Technologies used" className="mt-4 flex flex-wrap gap-2">
+        {techs.map((tech) => (
+          <li key={tech} className="chip chip-hover">
+            {tech}
+          </li>
         ))}
-      </motion.div>
+      </ul>
+
+      {featured ? (
+        // Featured card: impact + links on the left (5 of 12 columns), details on the right (7 of 12)
+        <div className="mt-8 grid flex-1 gap-8 lg:grid-cols-12">
+          <div className="flex flex-col gap-6 lg:col-span-5">
+            {impact}
+            <div className="mt-auto">{links}</div>
+          </div>
+          <div className="lg:col-span-7">{bullets}</div>
+        </div>
+      ) : (
+        <>
+          {impact && <div className="mt-6">{impact}</div>}
+          <div className="mt-6 flex-1">{bullets}</div>
+          <div className="mt-8">{links}</div>
+        </>
+      )}
+    </SpotlightCard>
+  );
+}
+
+export default function Projects() {
+  return (
+    <Section
+      id="projects"
+      index="03"
+      eyebrow="Projects"
+      title={
+        <>
+          Featured <span className="hl">projects</span>
+        </>
+      }
+    >
+      <div className="grid gap-6 md:grid-cols-2">
+        {PROJECTS.map((project, i) => {
+          const isFeatured = i === 0;
+          // Keep the grid tidy: if the last card would sit alone on a row, let it span the full width.
+          const isOrphan = i === PROJECTS.length - 1 && PROJECTS.length % 2 === 0;
+          return (
+            <Reveal
+              key={project.title}
+              delay={i > 0 ? ((i - 1) % 2) * 0.08 : 0}
+              className={isFeatured || isOrphan ? 'md:col-span-2' : ''}
+            >
+              <ProjectCard project={project} index={i} featured={isFeatured} />
+            </Reveal>
+          );
+        })}
+      </div>
     </Section>
   );
-};
-
-export default Projects;
+}

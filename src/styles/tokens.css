@@ -1,0 +1,134 @@
+/* ==========================================================================
+   Design tokens: the single source of truth for colour, spacing, radius and type.
+
+   Default palette: "Slate & Muted Indigo".
+   Two alternates are included. Preview one by setting  <html data-theme="carbon-amber">
+   or  <html data-theme="nordic-zinc">  (in index.html, or in DevTools).
+
+   Names follow the design brief (--color-canvas, --color-surface, --color-border,
+   --color-text-primary, --color-accent-primary ...). Short Tailwind aliases used in the
+   components (text-fg, border-line, bg-raised ...) are mapped in the `@theme inline` block
+   at the bottom.
+
+   Rules (enforced by `npm run tokens:check`, which parses this very file):
+     - Text: 4.5:1 minimum on canvas, surface and surface-raised.
+     - UI parts (icons, outlines, focus ring): 3:1 minimum.
+     - accent-primary is for fills, icons, borders and large type. Small indigo text must use
+       accent-primary-text. Never put small text on an accent-primary fill
+       (white gives 4.47:1 and dark ink 4.32:1, both below 4.5:1).
+     - Primary buttons use accent-secondary as the fill with on-accent as the label.
+
+   Keep declarations one per line, hex values only, with a trailing comment:
+   the exporter turns the comment into the token description.
+   ========================================================================== */
+
+/* Raw tokens. `static` makes Tailwind always emit them, even when no utility uses them. */
+@theme static {
+  /* --- Palette: Slate & Muted Indigo (default) --- */
+  --color-canvas: #0B0E14; /* page background */
+  --color-surface: #181B24; /* cards and panels */
+  --color-surface-raised: #202532; /* inputs and hover surfaces */
+  --color-border: #2B3040; /* decorative card and divider lines */
+  --color-border-strong: #64748B; /* outlines that identify a control (form inputs), and hover borders */
+  --color-text-primary: #E2E8F0; /* headings and body copy */
+  --color-text-secondary: #94A3B8; /* descriptions and supporting copy */
+  --color-text-tertiary: #8190A8; /* labels, placeholders, footer */
+  --color-accent-primary: #6366F1; /* identity accent: fills, icons, borders, large type */
+  --color-accent-primary-text: #818CF8; /* identity accent for small text on dark surfaces */
+  --color-accent-secondary: #38BDF8; /* action accent: buttons, focus ring, progress */
+  --color-on-accent: #0B0E14; /* label colour on action and status fills */
+  --color-success: #34D399; /* positive status */
+  --color-alert: #F87171; /* error status */
+
+  /* --- Spacing: 8px grid (rem, so it follows the visitor's font-size setting) --- */
+  --space-xs: 0.5rem; /* 8px: icon gaps, tight stacks */
+  --space-sm: 1rem; /* 16px: heading to paragraph */
+  --space-md: 1.5rem; /* 24px: between major blocks, card padding */
+  --space-lg: 2rem; /* 32px: card padding on desktop */
+  --space-xl: 3rem; /* 48px: section header to content */
+  --space-2xl: 4rem; /* 64px: large gaps */
+  --space-3xl: 6rem; /* 96px: section padding */
+
+  /* --- Radius --- */
+  --radius-card: 0.5rem; /* 8px: cards, buttons, inputs, menus */
+}
+
+/* Typography. Geist for UI and headings, Geist Mono for technical labels, Instrument Serif for the italic accent word. */
+@theme {
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, "Times New Roman", serif;
+
+  /* Display: the hero name. One tier above the brief's H1 (32-40px) on purpose, because it is the page's single statement. */
+  --text-display: clamp(2.75rem, 1.6rem + 4.8vw, 4.5rem);
+  --text-display--line-height: 1;
+  --text-display--letter-spacing: -0.04em;
+  --text-display--font-weight: 700;
+
+  /* H2: section titles (brief: 24-32px bold) */
+  --text-h2: clamp(1.5rem, 1.25rem + 1vw, 2rem);
+  --text-h2--line-height: 1.2;
+  --text-h2--letter-spacing: -0.02em;
+  --text-h2--font-weight: 700;
+
+  /* H3: card titles (20-24px) */
+  --text-h3: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --text-h3--line-height: 1.3;
+  --text-h3--letter-spacing: -0.01em;
+  --text-h3--font-weight: 600;
+
+  /* Lead: the hero tagline */
+  --text-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --text-lead--line-height: 1.35;
+  --text-lead--letter-spacing: -0.01em;
+}
+
+/* --- Palette: Warm Carbon & Amber --- */
+[data-theme="carbon-amber"] {
+  --color-canvas: #121110; /* page background */
+  --color-surface: #1C1A17; /* cards and panels */
+  --color-surface-raised: #26231F; /* inputs and hover surfaces */
+  --color-border: #35312C; /* decorative card and divider lines */
+  --color-border-strong: #7A6E61; /* outlines that identify a control (form inputs), and hover borders */
+  --color-text-primary: #F3EFEA; /* headings and body copy (parchment) */
+  --color-text-secondary: #B9B1A5; /* descriptions and supporting copy */
+  --color-text-tertiary: #9C9487; /* labels, placeholders, footer */
+  --color-accent-primary: #E5A93C; /* identity accent: fills, icons, borders, large type */
+  --color-accent-primary-text: #E5A93C; /* identity accent for small text (amber already passes on dark) */
+  --color-accent-secondary: #E5A93C; /* action accent: buttons, focus ring, progress */
+  --color-on-accent: #121110; /* label colour on action and status fills */
+  --color-success: #8FC27C; /* positive status */
+  --color-alert: #EE8B79; /* error status */
+}
+
+/* --- Palette: Nordic Zinc & Arctic Ice --- */
+[data-theme="nordic-zinc"] {
+  --color-canvas: #09090B; /* page background */
+  --color-surface: #18181B; /* cards and panels */
+  --color-surface-raised: #232326; /* inputs and hover surfaces */
+  --color-border: #2A2A2E; /* decorative card and divider lines */
+  --color-border-strong: #71717A; /* outlines that identify a control (form inputs), and hover borders */
+  --color-text-primary: #E4E4E7; /* headings and body copy */
+  --color-text-secondary: #A1A1AA; /* descriptions and supporting copy */
+  --color-text-tertiary: #8B8B94; /* labels, placeholders, footer */
+  --color-accent-primary: #38BDF8; /* identity accent: fills, icons, borders, large type */
+  --color-accent-primary-text: #38BDF8; /* identity accent for small text (cyan already passes on dark) */
+  --color-accent-secondary: #38BDF8; /* action accent: buttons, focus ring, progress */
+  --color-on-accent: #09090B; /* label colour on action and status fills */
+  --color-success: #4ADE80; /* positive status */
+  --color-alert: #F87171; /* error status */
+}
+
+/* Short names used by the components. `inline` makes utilities read the raw token directly,
+   so they follow whatever palette is active. */
+@theme inline {
+  --color-raised: var(--color-surface-raised);
+  --color-line: var(--color-border);
+  --color-line-strong: var(--color-border-strong);
+  --color-fg: var(--color-text-primary);
+  --color-muted: var(--color-text-secondary);
+  --color-subtle: var(--color-text-tertiary);
+  --color-accent: var(--color-accent-primary);
+  --color-accent-text: var(--color-accent-primary-text);
+  --color-action: var(--color-accent-secondary);
+}

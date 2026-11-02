@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="752" viewBox="0 0 960 752" role="img" aria-labelledby="t">
+<title id="t">Warm Carbon &amp; Amber colour swatches</title>
+<rect width="960" height="752" fill="#121110"/>
+<text x="32" y="60" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="700" fill="#F3EFEA" text-anchor="start">Warm Carbon &amp; Amber</text>
+<text x="928" y="60" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="400" fill="#9C9487" text-anchor="end">data-theme=&quot;carbon-amber&quot;</text>
+<text x="32" y="84" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="400" fill="#B9B1A5" text-anchor="start">Coffee-brown carbon base, archival amber highlights, parchment text.</text>
+<text x="32" y="132" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="400" fill="#9C9487" text-anchor="start">SURFACES AND BORDERS</text>
+<line x1="32" y1="144" x2="928" y2="144" stroke="#35312C"/>
+<rect x="32" y="160" width="136" height="88" rx="8" fill="#121110" stroke="#7A6E61" stroke-opacity="0.35"/>
+<text x="32" y="268" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="500" fill="#F3EFEA" text-anchor="start">canvas</text>
+<text x="32" y="284" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="400" fill="#B9B1A5" text-anchor="start">#121110</text>
+<rect x="184" y="160" width="136" height="88" rx="8" fill="#1C1A17" stroke="#7A6E61" stroke-opacity="0.35"/>
+<text x="184" y="268" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="500" fill="#F3EFEA" text-anchor="start">surface</text>
+<text x="184" y="284" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="400" fill="#B9B1A5" text-anchor="start">#1C1A17</text>
+<rect x="336" y="160" width="136" height="88" rx="8" fill="#26231F" stroke="#7A6E61" stroke-opacity="0.35"/>
+<text x="336" y="268" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="500" fill="#F3EFEA" text-anchor="start">surface-raised</text>
+<text x="336" y="284" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="400" fill="#B9B1A5" text-anchor="start">#26231F</text>
+<rect x="488" y="160" width="136" height="88" rx="8" fill="#35312C" stroke="#7A6E61" stroke-opacity="0.35"/>
+<text x="488" y="268" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="500" fill="#F3EFEA" text-anchor="start">border</text>
+<text x="488" y="284" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="400" fill="#B9B1A5" text-anchor="start">#35312C</text>
+<rect x="640" y="160" width="136" height="88" rx="8" fill="#7A6E61" stroke="#7A6E61" stroke-opacity="1"/>
+<text x="640" y="268" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="500" fill="#F3EFEA" text-anchor="start">border-strong</text>
+<text x="640" y="284" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="400" fill="#B9B1A5" text-anchor="start">#7A6E61</text>
+<text x="640" y="300" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="400" fill="#9C9487" text-anchor="start">3.49:1 AA on surface</text>
+<text x="32" y="332" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="400" fill="#9C9487" text-anchor="start">TEXT ON CANVAS</text>
+<line x1="32" y1="344" x2="928" y2="344" stroke="#35312C"/>
+<rect x="32" y="360" width="136" height="88" rx="8" fill="#121110" stroke="#35312C"/>
+<text x="48" y="416" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="36" font-weight="700" fill="#F3EFEA" text-anchor="start">Aa</text>
+<text x="32" y="468" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="500" fill="#F3EFEA" text-anchor="start">text-primary</text>
+<text x="32" y="484" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="400" fill="#B9B1A5" text-anchor="start">#F3EFEA</text>
+<text x="32" y="500" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="400" fill="#9C9487" text-anchor="start">16.47:1 AAA</text>
+<rect x="184" y="360" width="136" height="88" rx="8" fill="#121110" stroke="#35312C"/>
+<text x="200" y="416" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="36" font-weight="700" fill="#B9B1A5" text-anchor="start">Aa</text>
+<text x="184" y="468" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="500" fill="#F3EFEA" text-anchor="start">text-secondary</text>
+<text x="184" y="484" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="400" fill="#B9B1A5" text-anchor="start">#B9B1A5</text>
+<text x="184" y="500" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="400" fill="#9C9487" text-anchor="start">8.88:1 AAA</text>
+<rect x="336" y="360" width="136" height="88" rx="8" fill="#121110" stroke="#35312C"/>
+<text x="352" y="416" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="36" font-weight="700" fill="#9C9487" text-anchor="start">Aa</text>
+<text x="336" y="468" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="500" fill="#F3EFEA" text-anchor="start">text-tertiary</text>
+<text x="336" y="484" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="400" fill="#B9B1A5" text-anchor="start">#9C9487</text>
+<text x="336" y="500" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="400" fill="#9C9487" text-anchor="start">6.28:1 AA</text>
+<rect x="488" y="360" width="136" height="88" rx="8" fill="#121110" stroke="#35312C"/>
+<text x="504" y="416" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="36" font-weight="700" fill="#E5A93C" text-anchor="start">Aa</text>
+<text x="488" y="468" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="500" fill="#F3EFEA" text-anchor="start">accent-primary-text</text>
+<text x="488" y="484" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="400" fill="#B9B1A5" text-anchor="start">#E5A93C</text>
+<text x="488" y="500" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="400" fill="#9C9487" text-anchor="start">9.04:1 AAA</text>
+<text x="32" y="532" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="400" fill="#9C9487" text-anchor="start">ACCENTS, INK AND STATUS</text>
+<line x1="32" y1="544" x2="928" y2="544" stroke="#35312C"/>
+<rect x="32" y="560" width="136" height="88" rx="8" fill="#E5A93C"/>
+<text x="32" y="668" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="500" fill="#F3EFEA" text-anchor="start">accent-primary</text>
+<text x="32" y="684" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="400" fill="#B9B1A5" text-anchor="start">#E5A93C</text>
+<text x="32" y="700" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="400" fill="#9C9487" text-anchor="start">9.04:1 AA on canvas</text>
+<rect x="184" y="560" width="136" height="88" rx="8" fill="#E5A93C"/>
+<text x="200" y="612" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="600" fill="#121110" text-anchor="start">Button</text>
+<text x="184" y="668" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="500" fill="#F3EFEA" text-anchor="start">accent-secondary</text>
+<text x="184" y="684" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="400" fill="#B9B1A5" text-anchor="start">#E5A93C</text>
+<text x="184" y="700" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="400" fill="#9C9487" text-anchor="start">9.04:1 AAA on canvas</text>
+<rect x="336" y="560" width="136" height="88" rx="8" fill="#8FC27C"/>
+<text x="336" y="668" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="500" fill="#F3EFEA" text-anchor="start">success</text>
+<text x="336" y="684" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="400" fill="#B9B1A5" text-anchor="start">#8FC27C</text>
+<text x="336" y="700" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="400" fill="#9C9487" text-anchor="start">9.13:1 AAA on canvas</text>
+<rect x="488" y="560" width="136" height="88" rx="8" fill="#EE8B79"/>
+<text x="488" y="668" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="500" fill="#F3EFEA" text-anchor="start">alert</text>
+<text x="488" y="684" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="400" fill="#B9B1A5" text-anchor="start">#EE8B79</text>
+<text x="488" y="700" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="400" fill="#9C9487" text-anchor="start">7.72:1 AAA on canvas</text>
+<rect x="640" y="560" width="136" height="88" rx="8" fill="#E5A93C"/>
+<text x="656" y="616" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="36" font-weight="700" fill="#121110" text-anchor="start">Aa</text>
+<text x="640" y="668" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="500" fill="#F3EFEA" text-anchor="start">on-accent</text>
+<text x="640" y="684" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="400" fill="#B9B1A5" text-anchor="start">#121110</text>
+<text x="640" y="700" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="400" fill="#9C9487" text-anchor="start">9.04:1 AAA on button</text>
+<text x="32" y="724" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="400" fill="#9C9487" text-anchor="start">28/28 required contrast pairs pass WCAG 2.2 AA. Generated from src/styles/tokens.css.</text>
+</svg>
